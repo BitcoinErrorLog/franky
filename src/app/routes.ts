@@ -21,8 +21,10 @@ export enum APP_ROUTES {
   BOOKMARKS = '/bookmarks',
   SETTINGS = '/settings',
   PROFILE = '/profile',
-  COPYRIGHT = '/copyright',
 }
+
+// Static/legal pages accessible without authentication
+export const COPYRIGHT_ROUTE = '/copyright';
 
 export enum PROFILE_ROUTES {
   PROFILE = '/profile',
@@ -50,7 +52,7 @@ export enum POST_ROUTES {
   POST = '/post',
 }
 
-export const PUBLIC_ROUTES: string[] = [AUTH_ROUTES.LOGOUT, APP_ROUTES.COPYRIGHT];
+export const PUBLIC_ROUTES: string[] = [AUTH_ROUTES.LOGOUT, COPYRIGHT_ROUTE];
 
 export const ALLOWED_ROUTES = [
   ONBOARDING_ROUTES.PROFILE,
@@ -75,7 +77,7 @@ export const UNAUTHENTICATED_ROUTES = {
     ONBOARDING_ROUTES.BACKUP,
     ONBOARDING_ROUTES.HOMESERVER,
     AUTH_ROUTES.LOGOUT,
-    APP_ROUTES.COPYRIGHT,
+    COPYRIGHT_ROUTE,
   ],
   redirectTo: ROOT_ROUTES,
 };
