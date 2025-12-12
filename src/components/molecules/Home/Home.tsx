@@ -31,8 +31,7 @@ export const HomeFooter = ({ ...props }: React.HTMLAttributes<HTMLDivElement>) =
       <Atoms.Link href={Config.PUBKY_CORE_URL} target="_blank">
         Pubky Core
       </Atoms.Link>{' '}
-      and was built with love and dedication by Synonym Software Ltd. ©2025.{' '}
-      <Atoms.Link href={App.APP_ROUTES.COPYRIGHT}>Copyright</Atoms.Link>.
+      and was built with love and dedication by Synonym Software Ltd. ©2025.
     </Atoms.FooterLinks>
   );
 };
