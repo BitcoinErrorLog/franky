@@ -21,6 +21,7 @@ export enum APP_ROUTES {
   BOOKMARKS = '/bookmarks',
   SETTINGS = '/settings',
   PROFILE = '/profile',
+  COPYRIGHT = '/copyright',
 }
 
 export enum PROFILE_ROUTES {
@@ -49,7 +50,7 @@ export enum POST_ROUTES {
   POST = '/post',
 }
 
-export const PUBLIC_ROUTES: string[] = [AUTH_ROUTES.LOGOUT];
+export const PUBLIC_ROUTES: string[] = [AUTH_ROUTES.LOGOUT, APP_ROUTES.COPYRIGHT];
 
 export const ALLOWED_ROUTES = [
   ONBOARDING_ROUTES.PROFILE,
@@ -74,6 +75,7 @@ export const UNAUTHENTICATED_ROUTES = {
     ONBOARDING_ROUTES.BACKUP,
     ONBOARDING_ROUTES.HOMESERVER,
     AUTH_ROUTES.LOGOUT,
+    APP_ROUTES.COPYRIGHT,
   ],
   redirectTo: ROOT_ROUTES,
 };
