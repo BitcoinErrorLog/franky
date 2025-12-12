@@ -169,7 +169,7 @@ export function Copyright({ className }: CopyrightProps) {
       setSignature('');
       setErrors({});
     } catch (error) {
-      console.error('Error submitting form:', error);
+      Libs.Logger.error('DMCA form submission failed', { error });
       setErrors({ submit: 'Failed to submit request. Please try again.' });
     } finally {
       setLoading(false);
@@ -181,8 +181,8 @@ export function Copyright({ className }: CopyrightProps) {
       <Atoms.Container size="narrow" className={Libs.cn('py-8', className)}>
         <Molecules.SettingsSectionCard>
           <div className="flex flex-col items-center justify-center gap-4 py-12 text-center">
-            <Libs.CheckCircle size={48} className="text-green-500" />
-            <h2 className="text-2xl font-bold text-foreground">Request Submitted</h2>
+            <Libs.CheckCircle size={48} className="text-brand" />
+            <Atoms.Heading level={2} size="lg">Request Submitted</Atoms.Heading>
             <p className="text-muted-foreground">
               Your copyright removal request has been submitted successfully. We will review it and respond within one
               week.
@@ -200,7 +200,7 @@ export function Copyright({ className }: CopyrightProps) {
     <Atoms.Container size="narrow" className={Libs.cn('py-8', className)}>
       {/* Header Card */}
       <div className="mb-6 rounded-t-lg bg-white/10 p-8 md:p-12">
-        <h1 className="text-3xl font-bold text-foreground">Copyright Removal Request</h1>
+        <Atoms.Heading level={1} size="lg">Copyright Removal Request</Atoms.Heading>
         <p className="mt-2 text-sm text-muted-foreground">Date: {new Date().toLocaleDateString()}</p>
         <p className="mt-4 text-sm text-muted-foreground">
           <strong className="text-foreground">{COMPANY_INFO.name}</strong> (&quot;{COMPANY_INFO.shortName}&quot;)
@@ -220,7 +220,7 @@ export function Copyright({ className }: CopyrightProps) {
 
         {/* Rights Owner Information */}
         <div className="mt-6">
-          <h2 className="text-lg font-bold text-foreground">Rights Owner Information</h2>
+          <Atoms.Heading level={2} size="md">Rights Owner Information</Atoms.Heading>
           <div className="mt-4 flex flex-col gap-4 xl:flex-row xl:justify-between">
             <label className="flex cursor-pointer items-center gap-3">
               <input
@@ -254,7 +254,7 @@ export function Copyright({ className }: CopyrightProps) {
               className="mt-1"
               maxLength={50}
             />
-            {errors.nameOwner && <p className="mt-1 text-sm text-red-500">{errors.nameOwner}</p>}
+            {errors.nameOwner && <p className="mt-1 text-sm text-destructive">{errors.nameOwner}</p>}
           </div>
         </div>
 
@@ -279,7 +279,7 @@ export function Copyright({ className }: CopyrightProps) {
               placeholder="Enter URLs of your original content"
               className="mt-1 min-h-[100px]"
             />
-            {errors.originalContentUrls && <p className="mt-1 text-sm text-red-500">{errors.originalContentUrls}</p>}
+            {errors.originalContentUrls && <p className="mt-1 text-sm text-destructive">{errors.originalContentUrls}</p>}
           </div>
           <div>
             <label className="text-xs font-medium uppercase text-muted-foreground">
@@ -291,7 +291,7 @@ export function Copyright({ className }: CopyrightProps) {
               placeholder="Describe your original content"
               className="mt-1 min-h-[100px]"
             />
-            {errors.briefDescription && <p className="mt-1 text-sm text-red-500">{errors.briefDescription}</p>}
+            {errors.briefDescription && <p className="mt-1 text-sm text-destructive">{errors.briefDescription}</p>}
           </div>
         </div>
 
@@ -309,7 +309,7 @@ export function Copyright({ className }: CopyrightProps) {
 
         {/* Infringing Work Details */}
         <div className="mt-6">
-          <h2 className="text-lg font-bold text-foreground">Infringing work details</h2>
+          <Atoms.Heading level={2} size="md">Infringing work details</Atoms.Heading>
           <div className="mt-4">
             <label className="text-xs font-medium uppercase text-muted-foreground">Infringing Content URLs</label>
             <Atoms.Textarea
@@ -318,7 +318,7 @@ export function Copyright({ className }: CopyrightProps) {
               placeholder="Enter URLs of infringing content on Pubky"
               className="mt-1 min-h-[100px]"
             />
-            {errors.infringingContentUrl && <p className="mt-1 text-sm text-red-500">{errors.infringingContentUrl}</p>}
+            {errors.infringingContentUrl && <p className="mt-1 text-sm text-destructive">{errors.infringingContentUrl}</p>}
           </div>
         </div>
 
@@ -342,7 +342,7 @@ export function Copyright({ className }: CopyrightProps) {
 
         {/* Contact Information */}
         <div className="mt-6">
-          <h2 className="text-lg font-bold text-foreground">Contact Information</h2>
+          <Atoms.Heading level={2} size="md">Contact Information</Atoms.Heading>
           <div className="mt-4 grid gap-4 xl:grid-cols-2">
             <div>
               <label className="text-xs font-medium uppercase text-muted-foreground">First Name</label>
@@ -353,7 +353,7 @@ export function Copyright({ className }: CopyrightProps) {
                 className="mt-1"
                 maxLength={30}
               />
-              {errors.firstName && <p className="mt-1 text-sm text-red-500">{errors.firstName}</p>}
+              {errors.firstName && <p className="mt-1 text-sm text-destructive">{errors.firstName}</p>}
             </div>
             <div>
               <label className="text-xs font-medium uppercase text-muted-foreground">Last Name</label>
@@ -364,7 +364,7 @@ export function Copyright({ className }: CopyrightProps) {
                 className="mt-1"
                 maxLength={30}
               />
-              {errors.lastName && <p className="mt-1 text-sm text-red-500">{errors.lastName}</p>}
+              {errors.lastName && <p className="mt-1 text-sm text-destructive">{errors.lastName}</p>}
             </div>
             <div>
               <label className="text-xs font-medium uppercase text-muted-foreground">Email</label>
@@ -376,7 +376,7 @@ export function Copyright({ className }: CopyrightProps) {
                 className="mt-1"
                 maxLength={50}
               />
-              {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+              {errors.email && <p className="mt-1 text-sm text-destructive">{errors.email}</p>}
             </div>
             <div>
               <label className="text-xs font-medium uppercase text-muted-foreground">Phone Number</label>
@@ -387,14 +387,14 @@ export function Copyright({ className }: CopyrightProps) {
                 className="mt-1"
                 maxLength={20}
               />
-              {errors.phoneNumber && <p className="mt-1 text-sm text-red-500">{errors.phoneNumber}</p>}
+              {errors.phoneNumber && <p className="mt-1 text-sm text-destructive">{errors.phoneNumber}</p>}
             </div>
           </div>
         </div>
 
         {/* Address */}
         <div className="mt-6">
-          <h2 className="text-lg font-bold text-foreground">Address</h2>
+          <Atoms.Heading level={2} size="md">Address</Atoms.Heading>
           <div className="mt-4 grid gap-4 xl:grid-cols-2">
             <div>
               <label className="text-xs font-medium uppercase text-muted-foreground">Street Address</label>
@@ -405,7 +405,7 @@ export function Copyright({ className }: CopyrightProps) {
                 className="mt-1"
                 maxLength={100}
               />
-              {errors.streetAddress && <p className="mt-1 text-sm text-red-500">{errors.streetAddress}</p>}
+              {errors.streetAddress && <p className="mt-1 text-sm text-destructive">{errors.streetAddress}</p>}
             </div>
             <div>
               <label className="text-xs font-medium uppercase text-muted-foreground">Country</label>
@@ -416,7 +416,7 @@ export function Copyright({ className }: CopyrightProps) {
                 className="mt-1"
                 maxLength={50}
               />
-              {errors.country && <p className="mt-1 text-sm text-red-500">{errors.country}</p>}
+              {errors.country && <p className="mt-1 text-sm text-destructive">{errors.country}</p>}
             </div>
             <div>
               <label className="text-xs font-medium uppercase text-muted-foreground">City</label>
@@ -427,7 +427,7 @@ export function Copyright({ className }: CopyrightProps) {
                 className="mt-1"
                 maxLength={50}
               />
-              {errors.city && <p className="mt-1 text-sm text-red-500">{errors.city}</p>}
+              {errors.city && <p className="mt-1 text-sm text-destructive">{errors.city}</p>}
             </div>
             <div>
               <label className="text-xs font-medium uppercase text-muted-foreground">State/Province</label>
@@ -438,7 +438,7 @@ export function Copyright({ className }: CopyrightProps) {
                 className="mt-1"
                 maxLength={50}
               />
-              {errors.stateProvince && <p className="mt-1 text-sm text-red-500">{errors.stateProvince}</p>}
+              {errors.stateProvince && <p className="mt-1 text-sm text-destructive">{errors.stateProvince}</p>}
             </div>
           </div>
           <div className="mt-4 xl:w-1/2">
@@ -450,7 +450,7 @@ export function Copyright({ className }: CopyrightProps) {
               className="mt-1"
               maxLength={20}
             />
-            {errors.zipCode && <p className="mt-1 text-sm text-red-500">{errors.zipCode}</p>}
+            {errors.zipCode && <p className="mt-1 text-sm text-destructive">{errors.zipCode}</p>}
           </div>
         </div>
 
@@ -458,7 +458,7 @@ export function Copyright({ className }: CopyrightProps) {
 
         {/* Signature */}
         <div>
-          <h2 className="text-lg font-bold text-foreground">Signature</h2>
+          <Atoms.Heading level={2} size="md">Signature</Atoms.Heading>
           <div className="mt-4 xl:w-1/2">
             <label className="text-xs font-medium uppercase text-muted-foreground">Full Name as Signature</label>
             <Atoms.Input
@@ -468,14 +468,14 @@ export function Copyright({ className }: CopyrightProps) {
               className="mt-1"
               maxLength={50}
             />
-            {errors.signature && <p className="mt-1 text-sm text-red-500">{errors.signature}</p>}
+            {errors.signature && <p className="mt-1 text-sm text-destructive">{errors.signature}</p>}
           </div>
         </div>
 
         {/* Submit Error */}
         {errors.submit && (
-          <div className="mt-4 rounded-lg bg-red-500/10 p-4">
-            <p className="text-sm text-red-500">{errors.submit}</p>
+          <div className="mt-4 rounded-lg bg-destructive/10 p-4">
+            <p className="text-sm text-destructive">{errors.submit}</p>
           </div>
         )}
 
@@ -484,7 +484,7 @@ export function Copyright({ className }: CopyrightProps) {
           <Atoms.Button
             onClick={handleSubmit}
             disabled={loading}
-            className="bg-[#c8ff00] text-black hover:bg-[#b8ef00]"
+            className="bg-brand text-brand-foreground hover:bg-brand/90"
           >
             {loading ? (
               <>
