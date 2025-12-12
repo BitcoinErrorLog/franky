@@ -33,9 +33,6 @@ export function SettingsInfo({ className }: SettingsInfoProps) {
           <Organisms.DialogPrivacy
             trigger={<Atoms.SidebarButton icon={Libs.LockKeyhole}>Privacy policy</Atoms.SidebarButton>}
           />
-          <Link href={App.APP_ROUTES.COPYRIGHT}>
-            <Atoms.SidebarButton icon={Libs.Copyright}>Copyright</Atoms.SidebarButton>
-          </Link>
         </Atoms.FilterList>
       </Atoms.FilterRoot>
 
