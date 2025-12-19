@@ -17,6 +17,25 @@ const nextConfig: NextConfig = {
   // Empty turbopack config to silence the warning
   // We're using webpack (via --webpack flag) due to our WebAssembly requirements
   turbopack: {},
+
+  // Headers for .well-known files (Digital Asset Links, etc.)
+  async headers() {
+    return [
+      {
+        source: '/.well-known/:path*',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/json',
+          },
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 const withSerwist = withSerwistInit({

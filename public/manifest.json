@@ -104,5 +104,48 @@
       "protocol": "web+pubkyring",
       "url": "/invite/%s"
     }
-  ]
+  ],
+  "shortcuts": [
+    {
+      "name": "Home Feed",
+      "short_name": "Home",
+      "url": "/home",
+      "icons": [
+        {
+          "src": "/images/manifest/web-app-manifest-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "short_name": "Search",
+      "url": "/search",
+      "icons": [
+        {
+          "src": "/images/manifest/web-app-manifest-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Hot Posts",
+      "short_name": "Hot",
+      "url": "/hot",
+      "icons": [
+        {
+          "src": "/images/manifest/web-app-manifest-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=app.pubky.twa",
+      "id": "app.pubky.twa"
+    }
+  ],
+  "prefer_related_applications": false
 }
