@@ -37,6 +37,7 @@ export * from './PopoverInvite';
 export * from './PopoverInviteHomeserver';
 export * from './PopoverPublicKey';
 export * from './PopoverTradeoffs';
+export * from './PWAInstallPrompt';
 export * from './ProfilePageMobileMenu';
 export * from './ProfilePageFilterBar';
 export * from './ProfilePageTaggedAs';
